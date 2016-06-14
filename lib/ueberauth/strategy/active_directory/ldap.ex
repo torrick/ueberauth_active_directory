@@ -1,10 +1,4 @@
 defmodule Ueberauth.Strategy.ActiveDirectory.Ldap do
-  #https://github.com/ueberauth/ueberauth_identity
-  # {:ok, connection} = Exldap.connect
-  # {:ok, search_results} = Exldap.search_field(connection, "sAMAccountName", "username")
-  # {:ok, first_result} = search_results |> Enum.fetch(0)
-  # result = Exldap.search_attributes(first_result, "distinguishedName")
-
 
   def connect do
     opts = Application.get_env(:ueberauth, Ueberauth.Strategy.ActiveDirectory.Ldap)
@@ -37,7 +31,7 @@ defmodule Ueberauth.Strategy.ActiveDirectory.Ldap do
   end
 
   def first_result(nil), do: nil
-  def first_result(results), do: results |> Enum.fetch!(0)
+  def first_result(results), do: results |> List.first
 
   defp get_user_attributes(conn, username) do
     case get_all_attributes(conn, username) do

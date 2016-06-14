@@ -21,18 +21,18 @@ defmodule Ueberauth.Strategy.ActiveDirectory do
   end
 
   def uid(conn) do
-    conn.private.user['sAMAccountName'] |> Enum.fetch!(0) |> to_string
+    conn.private.user['sAMAccountName'] |> List.first |> to_string
   end
 
   def info(conn) do
     user = conn.private.user
 
     %Info{
-      name: user['displayName'] |> Ldap.first_result,
-      first_name: user['firstName'] |> Ldap.first_result,
-      last_name: user['sn'] |> Ldap.first_result,
-      email: user['mail'] |> Ldap.first_result,
-      nickname: user['sAMAccountName']|> Ldap.first_result
+      name: Ldap.first_result(user['displayName']),
+      first_name: Ldap.first_result(user['firstName']),
+      last_name: Ldap.first_result(user['sn']),
+      email: Ldap.first_result(user['mail']),
+      nickname: Ldap.first_result(user['sAMAccountName'])
     }
   end
 
