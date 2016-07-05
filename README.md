@@ -8,7 +8,7 @@ Add ueberauth_active_directory to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:ueberauth_active_directory, "~> 0.0.1"}]
+  [{:ueberauth_active_directory, "~> 0.1"}]
 end
 ```
 
@@ -80,7 +80,7 @@ end
 ```
 
 ## Tests
-Tests require an AD environment to run.  The vagrantfile included in the repo will take care of setting up the environment for you. 
+Tests require an AD environment to run.  The vagrantfile included in the repo will take care of setting up the environment for you.
 ### Prerequisites
 * [Vagrant](https://vagrantup.com)
 
