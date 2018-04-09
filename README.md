@@ -62,7 +62,7 @@ Configure authentication routes
 
 ```elixir
 scope "/auth", MyApp do
-  pipe_though :browser
+  pipe_through :browser
 
   get "/:provider", AuthController, :request
   get "/:provider/callback", AuthController, :callback
